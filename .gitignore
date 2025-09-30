@@ -5,4 +5,9 @@ modules
 zephyr
 zmk
 zmk-pmw3610-driver
+build/keyball39_left
+build/keyball39_left
+build/keyball39_left
+build
+firmware
 .DS_Store
