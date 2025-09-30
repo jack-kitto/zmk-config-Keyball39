@@ -1,0 +1,8 @@
+.west
+build
+firmware
+modules
+zephyr
+zmk
+zmk-pmw3610-driver
+.DS_Store
