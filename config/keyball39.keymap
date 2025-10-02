@@ -15,7 +15,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <behaviors.dtsi>
 
-// ---------- Global Behavior Overrides ----------
+// ---------- Behavior Tweaks ----------
 &lt {
     tapping-term-ms = <240>;
     flavor = "tap-preferred";
@@ -28,24 +28,15 @@
     quick-tap-ms = <200>;
 };
 
-&caps_word { continue-list = <UNDERSCORE MINUS>; };
+&caps_word {
+    continue-list = <UNDERSCORE MINUS>;
+};
 
 // =====================================
 // Devicetree Root
 // =====================================
 / {
     compatible = "zmk,keymap";
-
-    // ---------- Temporary Mouse Layer ----------
-    my_mouse_layer: zip_temp_layer {
-        compatible = "zmk,input-processor-temp-layer";
-        #input-processor-cells = <2>;
-        require-prior-idle-ms = <0>;
-    };
-
-    &mmv_input_listener { input-processors = <&my_mouse_layer MOUSE 2000>; };
-    &msc_input_listener { input-processors = <&my_mouse_layer MOUSE 2000>; };
-    &mkp_input_listener { input-processors = <&my_mouse_layer MOUSE 2000>; };
 
     // =====================================
     // Keymaps
@@ -67,10 +58,10 @@
         number_layer {
             label = "NUM";
             bindings = <
-&kp ESC         &none       &none       &none        &none        &none        &none       &none       &none        &kp BSPC
-&kp N1          &kp N2      &kp N3      &kp N4       &kp N5       &kp N6       &kp N7      &kp N8      &kp N9       &kp N0
-&none           &none       &none       &none        &none        &none        &none       &none       &none        &none
-&bt BT_CLR      &bootloader &none       &lt MEDIA ESCAPE &lt NUM SPACE &lt SYM ENTER &kp BSPC    &none       &none        &kp K_POWER
+&kp ESC         &none       &none        &none        &none        &none        &none       &none       &none        &kp BSPC
+&kp N1          &kp N2      &kp N3       &kp N4       &kp N5       &kp N6       &kp N7      &kp N8      &kp N9       &kp N0
+&none           &none       &none        &none        &none        &none        &none       &none       &none        &none
+&bt BT_CLR      &bootloader &none        &lt MEDIA ESCAPE &lt NUM SPACE &lt SYM ENTER &kp BSPC    &none       &none        &kp K_POWER
             >;
         };
 
@@ -81,7 +72,7 @@
 &kp ESC         &kp LT      &kp GT       &kp MINUS    &kp PIPE     &kp CARET    &kp LBRC     &kp RBRC     &kp DOLLAR   &kp BSPC
 &kp EXCL        &kp ASTRK   &kp SLASH    &kp EQUAL    &kp AMPS     &kp LPAR     &kp RPAR     &kp SEMI     &kp APOS     &kp DQT
 &kp TILDE       &kp PLUS    &kp LBKT     &kp PRCNT    &kp AT       &kp COLON    &kp COMMA    &kp DOT      &kp GRAVE    &kp SLASH
-&bt BT_CLR      &bootloader &none       &lt MEDIA ESCAPE &lt NUM SPACE &lt SYM ENTER &kp BSPC    &none       &none        &kp K_POWER
+&bt BT_CLR      &bootloader &none        &lt MEDIA ESCAPE &lt NUM SPACE &lt SYM ENTER &kp BSPC    &none       &none        &kp K_POWER
             >;
         };
 
@@ -92,19 +83,9 @@
 &kp ESC         &kp C_NEXT  &none        &none        &none        &none        &kp C_BRI_UP &none       &none        &kp BSPC
 &kp C_VOL_DN    &kp C_VOL_UP &kp C_BRI_DN &kp C_BRI_UP &none        &kp LEFT     &kp DOWN    &kp UP      &kp RIGHT    &none
 &none           &none       &kp C_MUTE   &none        &kp C_PREV   &none        &none       &none       &none        &none
-&bt BT_CLR      &bootloader &none       &lt MEDIA ESCAPE &lt NUM SPACE &lt SYM ENTER &kp BSPC    &none       &none        &kp K_POWER
+&bt BT_CLR      &bootloader &none        &lt MEDIA ESCAPE &lt NUM SPACE &lt SYM ENTER &kp BSPC    &none       &none        &kp K_POWER
             >;
         };
 
-        // ---------- Mouse Layer ----------
-        mouse_layer {
-            label = "MOUSE";
-            bindings = <
-&none           &none       &none        &none        &none        &none        &none       &none       &none        &none
-&mkp LCLK       &mkp RCLK   &msc SCRL_UP &msc SCRL_DOWN &msc SCRL_RIGHT &none   &none       &none       &none        &none
-&mkp MB4        &mkp MB5    &none        &mkp MCLK    &none        &none        &none       &none       &none        &none
-&none           &none       &none        &none        &none        &none        &none       &none       &none        &none
-            >;
-        };
     };
 };
