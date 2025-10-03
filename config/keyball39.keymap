@@ -27,16 +27,26 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp ESC>;
+        };
+    };
     keymap {
         compatible = "zmk,keymap";
 
+        // ---------- Default Layer ----------
         default_layer {
             label = "QWERTY";
             bindings = <
-        &kp Q           &kp W           &kp E           &kp R           &kp T            &kp Y           &kp U           &kp I           &kp O           &kp P
-        &mt LSHFT A     &mt LCTRL S     &mt LALT D      &mt LGUI F      &kp G            &kp H           &mt RGUI J      &mt RALT K      &mt RCTRL L     &mt RSHFT SEMI
-        &kp Z           &kp X           &kp C           &kp V           &kp B            &kp N           &kp M           &kp COMMA       &kp DOT         &kp SLASH
-        &kp TAB         &lt SCROLL ESC  &trans          &lt MEDIA ESC   &lt SCROLL SPACE &lt SYM ENTER                   &trans    &lt NUM BSPC   &trans
+                &kp Q             &kp W             &kp E             &kp R             &kp T             &kp Y             &kp U             &kp I             &kp O             &kp P
+                &mt LSHFT A       &mt LCTRL S       &mt LALT D        &mt LGUI F        &kp G             &kp H             &mt RGUI J        &mt RALT K        &mt RCTRL L       &mt RSHFT SEMI
+                &kp Z             &kp X             &kp C             &kp V             &kp B             &kp N             &kp M             &kp COMMA         &kp DOT           &kp SLASH
+                &kp TAB           &lt SCROLL ESC    &trans            &lt SCROLL TAB    &lt NUM SPACE     &lt SYM ENTER     &trans            &lt NUM BSPC       &trans           &trans
             >;
         };
 
@@ -44,10 +54,10 @@
         number_layer {
             label = "NUM";
             bindings = <
-        &kp ESC         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp BSPC
-        &kp N1          &kp N2          &kp N3          &kp N4          &kp N5          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-                        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+                &kp ESC           &trans            &trans            &kp GRAVE         &kp MINUS         &trans            &trans            &trans            &trans            &kp BSPC
+                &mt LSHFT N1      &mt LCTRL N2      &mt LALT N3       &mt LGUI N4       &kp N5            &kp N6            &mt RGUI N7       &mt RALT N8       &mt RCTRL N9      &mt RSHFT N0
+                &trans            &trans            &trans            &kp BSLH          &kp EQUAL         &kp LPAR          &kp RPAR          &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
             >;
         };
 
@@ -55,10 +65,10 @@
         symbol_layer {
             label = "SYM";
             bindings = <
-        &kp ESC         &kp LT          &kp GT          &kp MINUS       &kp PIPE        &kp CARET       &kp LBRC        &kp RBRC        &kp DOLLAR      &kp BSPC
-        &kp EXCL        &kp ASTRK       &kp SLASH       &kp EQUAL       &kp AMPS        &kp LPAR        &kp RPAR        &kp SEMI        &kp APOS        &kp DQT
-        &kp TILDE       &kp PLUS        &kp LBKT        &kp PRCNT       &kp AT          &kp COLON       &kp COMMA       &kp DOT         &kp GRAVE       &kp BSLH
-                        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+                &kp ESC           &kp LT            &kp GT            &kp MINUS         &kp PLUS          &kp PIPE          &kp CARET         &kp TILDE         &kp DOLLAR        &kp BSPC
+                &mt LSHFT EXCL    &mt LCTRL ASTRK   &mt LALT SLASH    &mt LGUI EQUAL    &kp AMPS          &kp LPAR          &mt RGUI RPAR     &mt RALT LBRC     &mt RCTRL RBRC    &mt RSHFT BSLH
+                &kp GRAVE         &kp PRCNT         &kp AT            &kp COLON         &kp UNDER         &kp LBKT          &kp RBKT          &kp APOS          &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
             >;
         };
 
@@ -66,10 +76,10 @@
         media_layer {
             label = "MEDIA";
             bindings = <
-        &kp ESC         &kp C_NEXT      &trans          &trans          &trans          &trans          &kp C_BRI_UP    &trans          &trans          &kp BSPC
-        &kp C_VOL_DN    &kp C_VOL_UP    &kp C_BRI_DN    &kp C_BRI_UP    &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &trans
-        &trans          &trans          &kp C_MUTE      &trans          &kp C_PREV      &trans          &trans          &trans          &trans          &trans
-                        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+                &kp ESC           &kp C_NEXT        &trans            &trans            &trans            &trans            &kp C_BRI_UP      &trans            &trans            &kp BSPC
+                &kp C_VOL_DN      &kp C_VOL_UP      &kp C_BRI_DN      &kp C_BRI_UP      &trans            &kp LEFT          &kp DOWN          &kp UP            &kp RIGHT         &trans
+                &trans            &kp C_PLAY_PAUSE  &kp C_MUTE        &trans            &kp C_PREV        &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
             >;
         };
 
@@ -77,10 +87,10 @@
         mouse_layer {
             label = "MOUSE";
             bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &mkp MB4        &mkp MB5        &mkp RCLK       &mkp LCLK       &mkp MCLK       &trans          &trans          &trans          &trans          &trans
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-                        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &mkp MB4          &mkp MB5          &mkp RCLK         &mkp LCLK         &mkp MCLK         &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
             >;
         };
 
@@ -88,10 +98,10 @@
         scroll_layer {
             label = "SCROLL";
             bindings = <
-        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &mkp LCLK       &mkp RCLK       &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-        &mkp MB4        &mkp MB5        &trans          &mkp MCLK       &trans          &trans          &trans          &trans          &trans          &trans
-                        &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &mkp LCLK         &mkp RCLK         &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &mkp MB4          &mkp MB5          &trans            &mkp MCLK         &trans            &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
             >;
         };
     };

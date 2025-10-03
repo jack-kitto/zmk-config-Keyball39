@@ -1,0 +1,2 @@
+- no way to press right brace "]"
+- i want my home row modes on the symbol and number layers, primarily so that i can simplify the symbol layer by having the single and double quotes on the same key, as well as the square and curley brackets
