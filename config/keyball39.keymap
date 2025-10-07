@@ -35,6 +35,12 @@
             key-positions = <16 17>;
             bindings = <&kp ESC>;
         };
+
+        combo_quote {
+            timeout-ms = <50>;
+            key-positions = <18 19>;
+            bindings = <&kp SQT>;
+        };
     };
     keymap {
         compatible = "zmk,keymap";
