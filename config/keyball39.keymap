@@ -1,9 +1,8 @@
 #define DEFAULT 0
 #define NUM     1
-#define SYM     2
-#define MEDIA   3
-#define MOUSE   4
-#define SCROLL  5
+#define MEDIA   2
+#define MOUSE   3
+#define SCROLL  4
 
 #include <dt-bindings/zmk/pointing.h>
 #include <behaviors.dtsi>
@@ -52,7 +51,7 @@
                 &kp Q             &kp W             &kp E             &kp R             &kp T             &kp Y             &kp U             &kp I             &kp O             &kp P
                 &mt LSHFT A       &mt LCTRL S       &mt LALT D        &mt LGUI F        &kp G             &kp H             &mt RGUI J        &mt RALT K        &mt RCTRL L       &mt RSHFT SEMI
                 &kp Z             &kp X             &kp C             &kp V             &kp B             &kp N             &kp M             &kp COMMA         &kp DOT           &kp SLASH
-                &kp TAB           &lt SCROLL ESC    &trans            &lt MEDIA TAB     &lt NUM SPACE     &kp ENTER         &trans            &kp BSPC                            &mo MOUSE
+                &trans            &trans            &trans            &lt MEDIA TAB    &lt NUM SPACE      &kp ENTER         &trans            &kp BSPC                            &mo MOUSE
             >;
         };
 
@@ -62,19 +61,8 @@
             bindings = <
                 &kp ESC           &trans            &trans            &kp GRAVE         &kp MINUS         &trans            &trans            &trans            &trans            &kp BSPC
                 &mt LSHFT N1      &mt LCTRL N2      &mt LALT N3       &mt LGUI N4       &kp N5            &kp N6            &mt RGUI N7       &mt RALT N8       &mt RCTRL N9      &mt RSHFT N0
-                &trans            &trans            &trans            &kp BSLH          &kp EQUAL         &kp LBKT          &kp LBKT          &trans            &trans            &trans
-                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
-            >;
-        };
-
-        // ---------- Symbol Layer ----------
-        symbol_layer {
-            label = "SYM";
-            bindings = <
-                &kp ESC           &kp LT            &kp GT            &kp MINUS         &kp PLUS          &kp PIPE          &kp CARET         &kp TILDE         &kp DOLLAR        &kp BSPC
-                &mt LSHFT EXCL    &mt LCTRL ASTRK   &mt LALT SLASH    &mt LGUI EQUAL    &kp AMPS          &kp LPAR          &mt RGUI RPAR     &mt RALT LBRC     &mt RCTRL RBRC    &mt RSHFT BSLH
-                &kp GRAVE         &kp PRCNT         &kp AT            &kp COLON         &kp UNDER         &kp LBKT          &kp RBKT          &kp APOS          &trans            &trans
-                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &kp BSLH          &kp EQUAL         &kp LBKT          &kp RBKT          &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans                              &trans
             >;
         };
 
@@ -85,7 +73,7 @@
                 &kp ESC           &kp C_NEXT        &trans            &trans            &trans            &trans            &kp C_BRI_UP      &trans            &trans            &kp BSPC
                 &kp C_VOL_DN      &kp C_VOL_UP      &kp C_BRI_DN      &kp C_BRI_UP      &trans            &kp LEFT          &kp DOWN          &kp UP            &kp RIGHT         &trans
                 &trans            &kp C_PLAY_PAUSE  &kp C_MUTE        &trans            &kp C_PREV        &trans            &trans            &trans            &trans            &trans
-                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans                              &trans
             >;
         };
 
@@ -95,8 +83,8 @@
             bindings = <
                 &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
                 &mkp MB4          &mkp MB5          &mkp RCLK         &mkp LCLK         &mkp MCLK         &mkp MCLK         &mkp LCLK         &mkp RCLK         &mkp MB4          &mkp MB5
-                &trans            &trans            &trans            &trans            &mo SCROLL        &trans            &trans            &mo SCROLL            &trans            &trans
-                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &mo SCROLL        &trans            &trans            &mo SCROLL        &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans                              &trans
             >;
         };
 
@@ -105,9 +93,9 @@
             label = "SCROLL";
             bindings = <
                 &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
-                &mkp LCLK         &mkp RCLK         &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
-                &mkp MB4          &mkp MB5          &trans            &mkp MCLK         &trans            &trans            &trans            &trans            &trans            &trans
                 &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans
+                &trans            &trans            &trans            &trans            &trans            &trans            &trans            &trans                              &trans
             >;
         };
     };
