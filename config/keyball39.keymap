@@ -3,7 +3,12 @@
 #define MEDIA   2
 #define MOUSE   3
 #define SCROLL  4
+#define BT      5
+#define GAME    6
+#define SNIPE   7
 
+#include <behaviors/mouse_keys.dtsi>
+#include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -21,8 +26,8 @@
     quick-tap-ms = <200>;
 };
 
-&caps_word { 
-    continue-list = <UNDERSCORE MINUS>; 
+&caps_word {
+    continue-list = <UNDERSCORE MINUS>;
 };
 
 / {
@@ -41,6 +46,7 @@
             bindings = <&kp SQT>;
         };
     };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -48,10 +54,10 @@
         default_layer {
             label = "QWERTY";
             bindings = <
-                &kp Q                 &kp W                 &kp E                &kp R                &kp T             &kp Y             &kp U             &kp I             &kp O             &kp P
-                &mt LSHFT A           &mt LCTRL S           &mt LALT D           &mt LGUI F           &kp G             &kp H             &mt RGUI J        &mt RALT K        &mt RCTRL L       &mt RSHFT SEMI
-                &kp Z                 &kp X                 &kp C                &kp V                &kp B             &kp N             &kp M             &kp COMMA         &kp DOT           &kp SLASH
-                &trans                &trans                &trans               &lt MEDIA TAB        &lt NUM SPACE      &kp ENTER         &trans            &kp BSPC                            &mo MOUSE
+                &kp Q                 &kp W                 &kp E                 &kp R                &kp T             &kp Y             &kp U             &kp I             &kp O             &kp P
+                &mt LSHFT A           &mt LCTRL S           &mt LALT D            &mt LGUI F           &kp G             &kp H             &mt RGUI J        &mt RALT K        &mt RCTRL L       &mt RSHFT SEMI
+                &kp Z                 &kp X                 &kp C                 &kp V                &kp B             &kp N             &kp M             &kp COMMA         &kp DOT           &kp SLASH
+                &tog GAME             &trans                &trans                &lt MEDIA TAB        &lt NUM SPACE     &kp ENTER         &mo BT            &kp BSPC                            &mo MOUSE
             >;
         };
 
@@ -83,7 +89,7 @@
             bindings = <
                 &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans            &trans            &trans
                 &mkp MB4              &mkp MB5              &mkp RCLK            &mkp LCLK            &mkp MCLK         &mkp MCLK         &mkp LCLK         &mkp RCLK         &mkp MB4          &mkp MB5
-                &trans                &trans                &trans               &trans               &mo SCROLL        &trans            &trans            &mo SCROLL        &trans            &trans
+                &trans                &trans                &trans               &trans               &mo SCROLL        &trans            &trans            &mo SCROLL        &mo SNIPE         &trans
                 &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans                              &trans
             >;
         };
@@ -98,5 +104,38 @@
                 &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans                              &trans
             >;
         };
+
+        // ---------- Bluetooth Layer ----------
+        bt_layer {
+            label = "BT";
+            bindings = <
+                &trans                &trans                &trans                &trans                &trans            &trans            &trans            &trans            &trans            &trans
+                &bt BT_SEL 0          &bt BT_SEL 1          &bt BT_SEL 2          &bt BT_SEL 3          &bt BT_SEL 4      &trans            &trans            &trans            &trans            &trans
+                &trans                &bt BT_CLR            &trans                &trans                &trans            &trans            &trans            &trans            &trans            &trans
+                &trans                &trans                &trans                &trans                &trans            &trans            &trans            &trans                              &trans
+            >;
+        };
+
+        game_layer {
+            label = "GAME";
+            bindings = <
+                &kp Q                 &kp W                 &kp E                 &kp R                &kp T             &kp Y             &kp U             &kp I             &kp O             &kp P
+                &kp A                 &kp S                 &kp D                 &kp F                &kp G             &kp H             &mt RGUI J        &mt RALT K        &mt RCTRL L       &mt RSHFT SEMI
+                &kp Z                 &kp X                 &kp C                 &kp V                &kp B             &kp N             &mkp LCLK         &mkp RCLK         &mkp MCLK         &kp SLASH
+                &tog GAME             &trans                &trans                &lt MEDIA TAB        &lt NUM SPACE     &kp ENTER         &mo BT            &kp BSPC                            &mo MOUSE
+            >;
+        };
+       
+        // ---------- Scroll Layer ----------
+        snipe_layer {
+            label = "SNIPE";
+            bindings = <
+                &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans            &trans            &trans
+                &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans            &trans            &trans
+                &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans            &trans            &trans
+                &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans                              &trans
+            >;
+        };
+
     };
 };
