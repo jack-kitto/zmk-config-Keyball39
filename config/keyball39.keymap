@@ -63,17 +63,6 @@
         };
 
 
-        // ---------- Gallium Layer ----------
-        gallium_layer {
-            label = "GALLIUM";
-            bindings = <
-                &kp B                 &kp L                 &kp D                 &kp C                &kp V             &kp J             &kp Y             &kp O             &kp U             &kp COMMA
-                &mt LSHFT N           &mt LCTRL R           &mt LALT T            &mt LGUI S           &kp G             &kp P             &mt RGUI H        &mt RALT A        &mt RCTRL E       &mt RSHFT I
-                &kp X                 &kp Q                 &kp M                 &kp W                &kp Z             &kp K             &kp F             &kp SQT           &kp SEMI          &kp DOT
-                &tog GAME             &trans                &trans                &lt MEDIA TAB        &lt NUM SPACE     &kp ENTER         &mo BT            &kp BSPC                            &mo MOUSE
-            >;
-        };
-
         // ---------- Number Layer ----------
         number_layer {
             label = "NUM";
@@ -139,7 +128,7 @@
             >;
         };
        
-        // ---------- Scroll Layer ----------
+        // ---------- SNIPE Layer ----------
         snipe_layer {
             label = "SNIPE";
             bindings = <
@@ -149,6 +138,19 @@
                 &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans                              &trans
             >;
         };
+
+        
+        // ---------- Gallium Layer ----------
+        gallium_layer {
+            label = "GALLIUM";
+            bindings = <
+                &kp B                 &kp L                 &kp D                 &kp C                &kp V             &kp J             &kp Y             &kp O             &kp U             &kp COMMA
+                &mt LSHFT N           &mt LCTRL R           &mt LALT T            &mt LGUI S           &kp G             &kp P             &mt RGUI H        &mt RALT A        &mt RCTRL E       &mt RSHFT I
+                &kp X                 &kp Q                 &kp M                 &kp W                &kp Z             &kp K             &kp F             &kp SQT           &kp SEMI          &kp DOT
+                &tog GAME             &trans                &trans                &lt MEDIA TAB        &lt NUM SPACE     &kp ENTER         &mo BT            &kp BSPC                            &mo MOUSE
+            >;
+        };
+
 
     };
 };
