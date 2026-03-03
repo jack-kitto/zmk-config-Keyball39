@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # === SETTINGS ===
-BOARD="nice_nano_v2"
+BOARD="nice_nano"
 DOCKER_IMAGE="zmkfirmware/zmk-build-arm:3.5-branch"
 
 # Shields to build
