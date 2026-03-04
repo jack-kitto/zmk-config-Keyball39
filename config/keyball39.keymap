@@ -1,12 +1,12 @@
-#define DEFAULT 0
-#define NUM     1
-#define MEDIA   2
-#define MOUSE   3
-#define SCROLL  4
-#define BT      5
-#define GAME    6
-#define SNIPE   7
-#define GALLIUM 8
+#define QWERTY  0
+#define GALLIUM 1
+#define GAME    2
+#define NUM     3
+#define MEDIA   4
+#define MOUSE   5
+#define SCROLL  6
+#define BT      7
+#define SNIPE   8
 
 #include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/mouse.h>
@@ -62,6 +62,27 @@
             >;
         };
 
+        // ---------- Gallium Layer ----------
+        gallium_layer {
+            label = "GALLIUM";
+            bindings = <
+                &kp B                 &kp L                 &kp D                 &kp C                &kp V             &kp J             &kp Y             &kp O             &kp U             &kp COMMA
+                &mt LSHFT N           &mt LCTRL R           &mt LALT T            &mt LGUI S           &kp G             &kp P             &mt RGUI H        &mt RALT A        &mt RCTRL E       &mt RSHFT I
+                &kp X                 &kp Q                 &kp M                 &kp W                &kp Z             &kp K             &kp F             &kp SQT           &kp SEMI          &kp DOT
+                &trans                &trans                &trans                &trans               &trans            &trans            &trans            &trans                              &trans
+            >;
+        };
+
+        // ---------- Game Layer ----------
+        game_layer {
+            label = "GAME";
+            bindings = <
+                &kp Q         &kp E         &kp W         &kp R         &kp TAB       &kp Y         &kp U         &kp I         &kp O         &kp P
+                &kp LSHFT     &kp A         &kp S         &kp D         &kp F         &kp H         &kp J         &kp K         &kp L         &kp SEMI
+                &kp Z         &kp B         &kp C         &kp G         &kp V         &kp N         &mkp LCLK     &mkp RCLK     &mkp MCLK     &kp SLASH
+                &tog GAME     &kp ESC       &kp LCTRL     &kp LALT      &kp SPACE     &kp ENTER     &mo BT        &kp BSPC                    &mo MOUSE
+            >;
+        };
 
         // ---------- Number Layer ----------
         number_layer {
@@ -117,16 +138,6 @@
                 &trans                &trans                &trans                &trans                &trans            &trans            &trans            &trans                              &trans
             >;
         };
-
-        game_layer {
-            label = "GAME";
-            bindings = <
-                &kp Q                 &kp W                 &kp E                 &kp R                &kp T             &kp Y             &kp U             &kp I             &kp O             &kp P
-                &kp A                 &kp S                 &kp D                 &kp F                &kp G             &kp H             &mt RGUI J        &mt RALT K        &mt RCTRL L       &mt RSHFT SEMI
-                &kp Z                 &kp X                 &kp C                 &kp V                &kp B             &kp N             &mkp LCLK         &mkp RCLK         &mkp MCLK         &kp SLASH
-                &tog GAME             &trans                &trans                &lt MEDIA TAB        &lt NUM SPACE     &kp ENTER         &mo BT            &kp BSPC                            &mo MOUSE
-            >;
-        };
        
         // ---------- SNIPE Layer ----------
         snipe_layer {
@@ -138,19 +149,5 @@
                 &trans                &trans                &trans               &trans               &trans            &trans            &trans            &trans                              &trans
             >;
         };
-
-        
-        // ---------- Gallium Layer ----------
-        gallium_layer {
-            label = "GALLIUM";
-            bindings = <
-                &kp B                 &kp L                 &kp D                 &kp C                &kp V             &kp J             &kp Y             &kp O             &kp U             &kp COMMA
-                &mt LSHFT N           &mt LCTRL R           &mt LALT T            &mt LGUI S           &kp G             &kp P             &mt RGUI H        &mt RALT A        &mt RCTRL E       &mt RSHFT I
-                &kp X                 &kp Q                 &kp M                 &kp W                &kp Z             &kp K             &kp F             &kp SQT           &kp SEMI          &kp DOT
-                &tog GAME             &trans                &trans                &lt MEDIA TAB        &lt NUM SPACE     &kp ENTER         &mo BT            &kp BSPC                            &mo MOUSE
-            >;
-        };
-
-
     };
 };
