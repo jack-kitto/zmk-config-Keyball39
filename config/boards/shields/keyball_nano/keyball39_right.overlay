@@ -56,7 +56,6 @@
         irq-gpios = <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         scroll-layers = <6>;
         snipe-layers = <8>;
-        game-layers = <9>;
     };
 };
 
