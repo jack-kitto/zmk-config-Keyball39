@@ -79,8 +79,8 @@
             bindings = <
                 &kp Q                 &kp E                 &kp W                 &kp R                 &kp TAB       &kp Y         &kp U         &kp I         &kp O         &kp P
                 &kp LSHFT             &kp A                 &kp S                 &kp D                 &kp F         &kp H         &kp J         &kp K         &kp L         &kp SEMI
-                &kp Z                 &kp X                 &kp C                 &kp V                 &kp B         &kp N         &kp M         &kp COMMA     &mo SNIPE    &mk MCLK
-                &tog GAME             &kp ESC               &kp LCTRL             &mkp LCLK             &kp SPACE     &kp C         &mo BT        &kp BSPC                    &mk RCLK
+                &kp Z                 &kp X                 &kp C                 &kp V                 &kp B         &kp N         &kp M         &kp COMMA     &mo SNIPE     &mkp MCLK
+                &tog GAME             &kp ESC               &kp LCTRL             &mkp LCLK             &kp SPACE     &kp C         &mo BT        &kp BSPC                    &mkp RCLK
             >;
         };
 
