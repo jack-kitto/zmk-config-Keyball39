@@ -110,7 +110,7 @@ layers:
   - M
   - {t: ',', s: <}
   - SNIPE
-  - '&mk MCLK'
+  - $$mdi:mouse-scroll-wheel$$
   - {t: GAME, h: toggle}
   - $$mdi:keyboard-esc$$
   - $$mdi:apple-keyboard-control$$
@@ -119,7 +119,7 @@ layers:
   - C
   - BT
   - {t: '$$mdi:backspace$$', type: backspace}
-  - '&mk RCLK'
+  - $$mdi:mouse-right-click-outline$$
   NUM:
   - $$mdi:keyboard-esc$$
   - {t: '$$mdi:transfer$$', type: trans}
