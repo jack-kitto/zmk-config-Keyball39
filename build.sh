@@ -15,43 +15,56 @@ mkdir -p "$OUTPUT_DIR"
 echo "[*] Building ZMK locally with Docker"
 echo "[*] Shields: ${SHIELDS[*]}"
 
-docker run --rm -it \
+docker run --rm \
   --security-opt label=disable \
   -v "$(pwd)":/workspace \
   -w /workspace \
   "$DOCKER_IMAGE" \
   bash -c "
-    set -euo pipefail
+	set -euo pipefail
 
-    if [ ! -f .west/config ]; then
-      echo '[*] Fresh west init'
-      west init -l config
-      west update
-    else
-      echo '[*] Existing west workspace found, skipping init'
-      west update
-    fi
+	BASE=/workspace/.zmk-build-tmp
+	rm -rf \"\$BASE/config\"
+	mkdir -p \"\$BASE/config\"
+	cp -R /workspace/config/. \"\$BASE/config/\"
 
-    export CMAKE_PREFIX_PATH=/workspace/zephyr:\${CMAKE_PREFIX_PATH:-}
+	cd \"\$BASE\"
 
-    echo '[*] Building shields'
-    for shield in ${SHIELDS[*]}; do
-      echo
-      echo '=== Building \$shield ==='
+	if [ ! -f .west/config ]; then
+	  echo '[*] Fresh west init'
+	  west init -l config
+	  west update
+	else
+	  echo '[*] Existing west workspace found, skipping init'
+	  west update
+	fi
 
-      # Only wipe the shield’s build dir, not the whole workspace
-      rm -rf /workspace/build/\$shield
+	west zephyr-export
 
-      west build -d /workspace/build/\$shield \
-        -b '$BOARD' \
-        -s /workspace/zmk/app \
-        -- -DSHIELD=\$shield -DZMK_CONFIG=/workspace/config
+	echo '[*] Building shields'
+	for shield in ${SHIELDS[*]}; do
+	  echo
+	  echo \"=== Building \$shield ===\"
 
-      if [ -f /workspace/build/\$shield/zephyr/zmk.uf2 ]; then
+	  # Only wipe the shield’s build dir, not the whole workspace
+	  rm -rf /workspace/build/\$shield
+
+	  snippet_args=''
+	  if [ \"\$shield\" = keyball39_right ]; then
+	    snippet_args='-S studio-rpc-usb-uart'
+	  fi
+
+	  west build -d /workspace/build/\$shield \
+	    -b '$BOARD' \
+	    -s \"\$BASE/zmk/app\" \
+	    \$snippet_args \
+	    -- -DSHIELD=\$shield -DZMK_CONFIG=\"\$BASE/config\"
+
+	  if [ -f /workspace/build/\$shield/zephyr/zmk.uf2 ]; then
         cp /workspace/build/\$shield/zephyr/zmk.uf2 /workspace/firmware/\${shield}.uf2
-        echo '[✓] Successfully built \$shield'
+        echo \"[✓] Successfully built \$shield\"
       else
-        echo '[!] Failed to build \$shield'
+        echo \"[!] Failed to build \$shield\"
       fi
     done
 

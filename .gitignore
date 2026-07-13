@@ -1,10 +1,11 @@
 .west
+.zmk-build-tmp
 build
 firmware
-modules
-zephyr
-zmk
-zmk-pmw3610-driver
+/modules
+/zephyr
+/zmk
+/zmk-pmw3610-driver
 build/keyball39_left
 build/keyball39_left
 build/keyball39_left
